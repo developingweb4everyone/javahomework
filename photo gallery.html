@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+	<title>Photo Gallery</title>
+	<link rel="stylesheet" href="photo gallery.css">
+    <script>
+       
+       
+
+       document.addEventListener("DOMContentLoaded", function() {
+            var images = document.querySelectorAll('.gallery img');
+            var currentIndex = 0;
+
+            // Function to update currentIndex based on arrow key press
+            function updateIndex(direction) {
+                currentIndex += direction;
+                if (currentIndex < 0) {
+                    currentIndex = images.length - 1; // Wrap around to the last image
+                } else if (currentIndex >= images.length) {
+                    currentIndex = 0; // Wrap around to the first image
+                }
+                displayImage(images[currentIndex]);
+            }
+
+            // Function to display the image in the 'image' div
+            function displayImage(img) {
+                var display = document.getElementById('image');
+                display.innerHTML = ''; // Clear previous image
+                var clone = img.cloneNode(true); // Clone the image
+                display.appendChild(clone);
+            }
+
+            // Mouseover event
+            images.forEach(function(img) {
+                img.addEventListener('mouseover', function() {
+                    this.style.opacity = '0.7'; // Reduce opacity on mouseover
+                });
+                img.addEventListener('mouseout', function() {
+                    this.style.opacity = '1'; // Restore opacity on mouseout
+                });
+                img.addEventListener('click', function() {
+                    alert('You clicked on ' + this.alt); // Show an alert with the image alt text
+                });
+            });
+
+            // Keyboard event listener
+            document.addEventListener('keydown', function(event) {
+                switch (event.key) {
+                    case 'ArrowLeft':
+                        updateIndex(-1); // Move to previous image
+                        break;
+                    case 'ArrowRight':
+                        updateIndex(1); // Move to next image
+                        break;
+                }
+            });
+        });
+            
+    </script>
+</head>
+<body>
+    <div id = "image">
+		You can use tab as well as keyboard to see through my images
+	</div>
+
+<h2>Responsive Image Gallery</h2>
+
+
+
+<div class="responsive">
+  <div class="gallery">
+    <a target="_blank" href="images/founder.PNG"  tabindex="1">
+      <img src="images/founder.PNG" class= "preview" alt="The Tomb Of Quaid e Azam"  onmouseover = "upDate(this)" onmouseout = "unDo()">
+    </a>
+    
+  </div>
+</div>
+
+
+<div class="responsive">
+  <div class="gallery">
+    <a target="_blank" href="images/faisal mosque.PNG" tabindex="2">
+      <img src="images/faisal mosque.PNG" class= "preview" alt="The Faisal Mosque"  onmouseover = "upDate(this)" onmouseout = "unDo()">
+    </a>
+    
+  </div>
+</div>
+
+<div class="responsive">
+  <div class="gallery">
+    <a target="_blank" href="images/monument.PNG" tabindex="3">
+      <img src="images/monument.PNG" class= "preview" alt="Pakistan Monument"   onmouseover = "upDate(this)" onmouseout = "unDo()">
+    </a>
+ 
+  </div>
+</div>
+
+<div class="responsive">
+  <div class="gallery">
+    <a target="_blank" href="images/naure.PNG" tabindex="4">
+      <img src="images/naure.PNG" class= "preview" alt="Nature"  onmouseover = "upDate(this)" onmouseout = "unDo()">
+    </a>
+   
+  </div>
+</div>
+
+<div class="responsive">
+    <div class="gallery">
+      <a target="_blank" href="images/fores.PNG" tabindex="5">
+        <img src="images/fores.PNG" class= "preview" alt="Forest"  onmouseover = "upDate(this)" onmouseout = "unDo()">
+      </a>
+      
+    </div>
+  </div>
+
+  <div class="responsive">
+    <div class="gallery">
+      <a target="_blank" href="images/ice.PNG" tabindex="6">
+        <img src="images/ice.PNG" class= "preview" alt="Ice"  onmouseover = "upDate(this)" onmouseout = "unDo()">
+      </a>
+     
+    </div>
+  </div>
+
+ 
+
+
+<div class="clearfix"></div>
+
+<div style="padding:6px;">
+
+</div>
+
+</body>
+</html>
+
+
